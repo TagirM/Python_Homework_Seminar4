@@ -21,6 +21,7 @@ while isint(degreeK) == False:
 degreeK = int(degreeK)
 multiX = []
 count = 3
+data=open('file_for_zadacha4.txt','a')
 print("Полученные многочлены:")
 while count != 0:
     count -= 1
@@ -29,9 +30,11 @@ while count != 0:
         A = randint(0, 9)
         if oper == 0 and A!=0:
             multiX.append(A)
+            multiX.append(' = 0')
             break
         elif oper == 0 and A == 0:
             multiX.pop()
+            multiX.append(' = 0')
             break
         if A > 0:
             multiX.append(A)
@@ -39,7 +42,8 @@ while count != 0:
             multiX.append(oper)
             multiX.append(' + ')
         oper -= 1
-    # print(''.join(str(multiX)))
-    print(*multiX)
+    data.writelines(''.join(map(str,multiX)))
+    data.writelines('\n')
+    print(''.join(map(str,multiX)))
     multiX.clear()
-
+data.close()
